@@ -25,7 +25,6 @@ export default function NewsSlider() {
 
   return (
     <section ref={ref} className="relative bg-black py-24 overflow-hidden">
-      {/* Scanline top accent */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -43,7 +42,6 @@ export default function NewsSlider() {
         }}
       />
 
-      {/* Header */}
       <div className="px-6 md:px-12 lg:px-20 mb-12">
         <motion.div
           initial={{ opacity: 0, x: -24 }}
@@ -80,7 +78,6 @@ export default function NewsSlider() {
             </h2>
           </div>
 
-          {/* Nav arrows */}
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => goTo(active - 1)}
@@ -129,7 +126,6 @@ export default function NewsSlider() {
         </motion.div>
       </div>
 
-      {/* Slider */}
       <motion.div
         ref={sliderRef}
         className="flex gap-4 px-6 md:px-12 lg:px-20 overflow-x-auto pb-4"
@@ -163,8 +159,7 @@ export default function NewsSlider() {
         ))}
       </motion.div>
 
-      {/* Dot nav */}
-      <div className="flex items-center gap-2 px-6 md:px-12 lg:px-20 mt-8">
+      <div className="flex items-center justify-center gap-2 px-6 md:px-12 lg:px-20 mt-8">
         {NEWS_1st.map((_, i) => (
           <button
             key={i}
@@ -210,7 +205,6 @@ function NewsCard({
       layout
       transition={{ layout: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }}
     >
-      {/* Image */}
       <div
         className="relative overflow-hidden"
         style={{
@@ -228,13 +222,11 @@ function NewsCard({
               : "brightness(0.35) saturate(0.4)",
           }}
         />
-        {/* Top bar on image */}
         <div
           className="absolute top-0 left-0 right-0 h-px"
           style={{ background: item.tagColor }}
         />
 
-        {/* Tag */}
         <div
           className="absolute top-3 left-3 px-2 py-0.5"
           style={{
@@ -250,7 +242,6 @@ function NewsCard({
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-5 flex flex-col gap-3">
         <p
           style={{
@@ -295,7 +286,6 @@ function NewsCard({
           )}
         </AnimatePresence>
 
-        {/* Read more */}
         <div className="flex items-center gap-2 mt-1">
           <div
             className="h-px transition-all duration-300 group-hover:w-8"

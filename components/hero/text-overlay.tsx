@@ -15,7 +15,6 @@ export function TextOverlay({
         <motion.div
           key={beat.id}
           className="absolute left-8 md:left-16 bottom-16 md:bottom-20 pointer-events-none select-none"
-          style={{ maxWidth: "400px" }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
@@ -58,7 +57,11 @@ export function TextOverlay({
               exit={{ y: "-100%" }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             >
-              {beat.headline}
+              {beat.headline.split("\n")[0]}
+              <br />
+              <span style={{ color: "#00f5ff" }}>
+                {beat.headline.split("\n")[1]}
+              </span>
             </motion.h2>
           </div>
 

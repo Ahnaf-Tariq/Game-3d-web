@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Constant, WEAPONS } from "@/data/Data";
 import { FadeUp } from "./ui/common/fade-up";
-import { SectionLabel } from "./ui/common/section-label";
 
 export function WeaponsSection() {
   const [selected, setSelected] = useState(WEAPONS[0]);
@@ -54,7 +53,19 @@ export function WeaponsSection() {
         }}
       >
         <FadeUp>
-          <SectionLabel tag="// ARMORY //" accent={Constant.gold} />
+          <p
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontStyle: "italic",
+              fontSize: "12px",
+              letterSpacing: "0.3em",
+              color: "rgba(255,255,255,0.3)",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+            }}
+          >
+            // Armory //
+          </p>
           <h2
             style={{
               fontFamily: Constant.font,
@@ -65,7 +76,7 @@ export function WeaponsSection() {
               marginBottom: 48,
             }}
           >
-            CHOOSE YOUR <span style={{ color: Constant.gold }}>WEAPON</span>
+            CHOOSE YOUR <span style={{ color: "#00f5ff" }}>WEAPON</span>
           </h2>
         </FadeUp>
 
@@ -168,8 +179,8 @@ export function WeaponsSection() {
                       fontFamily: Constant.font,
                       fontSize: 10,
                       letterSpacing: "0.25em",
-                      color: Constant.gold,
-                      border: `1px solid ${Constant.gold}`,
+                      color: selected.accent,
+                      border: `1px solid ${selected.accent}`,
                       padding: "2px 8px",
                     }}
                   >
@@ -236,7 +247,7 @@ function WeaponRow({ weapon, isSelected, onClick }: any) {
         alignItems: "center",
         gap: 16,
         padding: "16px 20px",
-        background: isSelected ? `${weapon.accent}10` : "gray/10",
+        background: isSelected ? `${weapon.accent}10` : `${weapon.accent}08`,
         border: `1px solid ${isSelected ? weapon.accent : Constant.border}`,
         cursor: "pointer",
         transition: "background 0.2s, border-color 0.2s",
@@ -256,7 +267,7 @@ function WeaponRow({ weapon, isSelected, onClick }: any) {
           }}
         />
       )}
-      <span style={{ fontSize: 20, color: weapon.accent }}>{weapon.icon}</span>
+      <span style={{ fontSize: 24, color: weapon.accent }}>{weapon.icon}</span>
       <div>
         <div
           style={{
@@ -286,7 +297,7 @@ function WeaponRow({ weapon, isSelected, onClick }: any) {
           marginLeft: "auto",
           fontFamily: Constant.font,
           fontSize: 20,
-          color: isSelected ? Constant.gold : Constant.dim,
+          color: isSelected ? weapon.accent : Constant.dim,
           transition: "color 0.2s",
         }}
       >

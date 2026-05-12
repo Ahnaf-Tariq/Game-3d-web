@@ -22,7 +22,6 @@ export default function FEATURES() {
         }}
       />
 
-      {/* Section header */}
       <motion.div
         className="mb-16"
         initial={{ opacity: 0, y: 32 }}
@@ -53,13 +52,11 @@ export default function FEATURES() {
         >
           GAME
           <br />
-          <span style={{ color: "rgba(255,255,255,0.2)" }}>FEATURES</span>
+          <span style={{ color: "#00f5ff" }}>FEATURES</span>
         </h2>
       </motion.div>
 
-      {/* Cards grid — staggered, matching screenshot layout */}
       <div className="relative">
-        {/* Top row: cards 1, 3, 4, 5 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px">
           {FEATURES_1st.map((f, i) => (
             <FeatureCard
@@ -110,7 +107,6 @@ function FeatureCard({
           cursor: "none",
         }}
       >
-        {/* Hover glow */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
@@ -118,7 +114,6 @@ function FeatureCard({
           }}
         />
 
-        {/* Corner accent */}
         <div
           className="absolute top-0 left-0 w-12 h-px transition-all duration-500 group-hover:w-full"
           style={{ background: f.color }}
@@ -128,7 +123,6 @@ function FeatureCard({
           style={{ background: f.color }}
         />
 
-        {/* Label */}
         <p
           className="flex items-center gap-2"
           style={{
@@ -140,13 +134,8 @@ function FeatureCard({
           }}
         >
           // {f.label} //
-          <span
-            className="w-1.5 h-1.5 rounded-full shrink-0"
-            style={{ background: f.color }}
-          />
         </p>
 
-        {/* Icon */}
         <div
           className="transition-colors duration-300"
           style={{ color: f.color }}
@@ -154,7 +143,6 @@ function FeatureCard({
           {f.icon}
         </div>
 
-        {/* Title */}
         <h3
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
@@ -167,7 +155,6 @@ function FeatureCard({
           {f.title}
         </h3>
 
-        {/* Body */}
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -180,28 +167,6 @@ function FeatureCard({
         >
           {f.body}
         </p>
-
-        {/* Arrow */}
-        <div className="flex items-center gap-2 mt-2">
-          <div
-            className="w-4 h-px transition-all duration-300 group-hover:w-8"
-            style={{ background: f.color }}
-          />
-          <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          >
-            <path
-              d="M1 4H7M7 4L4 1M7 4L4 7"
-              stroke={f.color}
-              strokeWidth="1"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
       </div>
     </motion.div>
   );

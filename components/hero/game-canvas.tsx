@@ -6,6 +6,7 @@ import { LoadingScreen } from "./loading-screen";
 import { ChapterCounter, ScrollIndicator, ScrollProgress } from "./scroll";
 import { TextOverlay } from "./text-overlay";
 import { TEXT_BEATS, TextBeat } from "@/data/Data";
+import Image from "next/image";
 
 const TOTAL_FRAMES = 180;
 const FRAME_BASE = "/sequence/ezgif-frame-";
@@ -63,7 +64,7 @@ export default function GameCanvas() {
     bitmapsRef.current = bitmaps;
 
     for (let i = 0; i < TOTAL_FRAMES; i++) {
-      const img = new Image();
+      const img = new window.Image();
       img.src = getFrameSrc(i + 1);
       img.decoding = "async";
 
@@ -205,6 +206,22 @@ export default function GameCanvas() {
 
       <div ref={wrapperRef} className="relative h-[400vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <motion.div
+            className="absolute left-8 top-4 md:left-12 z-50 pointer-events-none"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Image
+              src="/logo_2.png"
+              alt="Blade Rush Logo"
+              width={120}
+              height={40}
+              priority
+              className="object-contain"
+            />
+          </motion.div>
+
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full"

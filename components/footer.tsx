@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Constant, FOOTER_LINKS } from "@/data/Data";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -219,24 +220,15 @@ export function Footer() {
         >
           {/* Brand */}
           <div>
-            <div
-              style={{
-                fontFamily: Constant.font,
-                fontSize: 36,
-                letterSpacing: "0.1em",
-                color: Constant.text,
-                marginBottom: 4,
-              }}
-            >
-              BLADE{" "}
-              <span
-                style={{
-                  color: Constant.cyan,
-                  textShadow: `0 0 20px ${Constant.cyan}66`,
-                }}
-              >
-                RUSH
-              </span>
+            <div className="mb-4">
+              <Image
+                src="/logo_2.png"
+                alt="Blade Rush Logo"
+                width={120}
+                height={40}
+                priority
+                className="object-contain"
+              />
             </div>
             <div
               style={{
