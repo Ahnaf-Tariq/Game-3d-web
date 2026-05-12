@@ -5,6 +5,7 @@ import { useScroll, useSpring, motion, AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "./loading-screen";
 import { ChapterCounter, ScrollIndicator, ScrollProgress } from "./scroll";
 import { TextOverlay } from "./text-overlay";
+import { TEXT_BEATS, TextBeat } from "@/data/Data";
 
 const TOTAL_FRAMES = 180;
 const FRAME_BASE = "/sequence/ezgif-frame-";
@@ -15,55 +16,6 @@ function padFrame(n: number): string {
 function getFrameSrc(i: number): string {
   return `${FRAME_BASE}${padFrame(i)}.jpg`;
 }
-
-export interface TextBeat {
-  id: string;
-  start: number;
-  end: number;
-  eyebrow: string;
-  headline: string;
-  body: string;
-  tag?: string;
-}
-
-export const TEXT_BEATS: TextBeat[] = [
-  {
-    id: "a",
-    start: 0.0,
-    end: 0.2,
-    eyebrow: "Chapter I",
-    headline: "BLADE\nRUSH",
-    body: "Go wild.",
-    tag: "001",
-  },
-  {
-    id: "b",
-    start: 0.25,
-    end: 0.45,
-    eyebrow: "Chapter II",
-    headline: "CRAFTED\nLAYERS",
-    body: "Pure matcha meets rich espresso.",
-    tag: "002",
-  },
-  {
-    id: "c",
-    start: 0.5,
-    end: 0.7,
-    eyebrow: "Chapter III",
-    headline: "NOISY TO\nPERFECTION",
-    body: "Enjoy it. Feel it.",
-    tag: "003",
-  },
-  {
-    id: "d",
-    start: 0.75,
-    end: 0.95,
-    eyebrow: "Chapter IV",
-    headline: "WAKE UP\nYOUR FLOW",
-    body: "Play the Blade Dash.",
-    tag: "004",
-  },
-];
 
 export default function GameCanvas() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -319,92 +271,6 @@ export default function GameCanvas() {
           </motion.div>
         </div>
       </div>
-
-      <motion.section
-        className="relative bg-black min-h-screen flex flex-col items-start justify-center px-8 md:px-16 py-24 overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        <div
-          className="absolute inset-0 flex items-center justify-end pr-8 pointer-events-none select-none"
-          style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(100px, 18vw, 280px)",
-            color: "rgba(255,255,255,0.03)",
-            letterSpacing: "-0.02em",
-            lineHeight: 0.85,
-          }}
-        >
-          BLADE RUSH
-        </div>
-
-        <motion.h2
-          style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(64px, 10vw, 140px)",
-            lineHeight: 0.88,
-            letterSpacing: "0.04em",
-            color: "rgba(255,255,255,0.92)",
-            marginBottom: "40px",
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-        >
-          YOUR BLADE
-          <br />
-          AWAITS.
-        </motion.h2>
-
-        <motion.button
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "13px",
-            letterSpacing: "0.25em",
-            textTransform: "uppercase",
-            color: "#000",
-            background: "rgba(255,255,255,0.92)",
-            border: "none",
-            padding: "14px 36px",
-            cursor: "none",
-          }}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.03, background: "#fff" }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          Play the Blade Dash
-        </motion.button>
-
-        {/* Bottom bar */}
-        <div className="absolute bottom-8 left-8 md:left-16 right-8 md:right-16 flex justify-between items-end">
-          <p
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "11px",
-              letterSpacing: "0.2em",
-              color: "rgba(255,255,255,0.18)",
-            }}
-          >
-            © All rights reserved.
-          </p>
-          <p
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "11px",
-              letterSpacing: "0.3em",
-              color: "rgba(255,255,255,0.12)",
-            }}
-          >
-            hello
-          </p>
-        </div>
-      </motion.section>
     </>
   );
 }

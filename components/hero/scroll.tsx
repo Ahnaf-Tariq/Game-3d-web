@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { TEXT_BEATS, TextBeat } from "./game-canvas";
+import { TEXT_BEATS, TextBeat } from "@/data/Data";
 
 export function ScrollIndicator({ visible }: { visible: boolean }) {
   return (
@@ -45,15 +45,14 @@ export function ScrollIndicator({ visible }: { visible: boolean }) {
 export function ScrollProgress({ progress }: { progress: number }) {
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-px z-40"
+      className="fixed top-0 left-0 right-0 h-0.5 z-40"
       style={{ background: "rgba(255,255,255,0.05)" }}
     >
       <motion.div
         className="h-full"
         style={{
           width: `${progress * 100}%`,
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.6))",
+          background: "linear-gradient(90deg, #3E5873, #5A7FA8, #9CC7F5)",
         }}
       />
     </div>

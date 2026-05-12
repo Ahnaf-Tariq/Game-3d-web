@@ -1,6 +1,6 @@
 "use client";
+import { TextBeat } from "@/data/Data";
 import { motion, AnimatePresence } from "framer-motion";
-import { TextBeat } from "./game-canvas";
 
 export function TextOverlay({
   beat,
