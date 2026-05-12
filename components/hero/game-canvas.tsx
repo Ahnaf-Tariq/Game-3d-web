@@ -30,6 +30,8 @@ export default function GameCanvas() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeBeat, setActiveBeat] = useState<TextBeat | null>(TEXT_BEATS[0]);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgressRef = useRef(0);
+  const currentBeatRef = useRef<string | null>(null);
 
   // Custom cursor
   const cursorDotRef = useRef<HTMLDivElement>(null);
@@ -165,7 +167,8 @@ export default function GameCanvas() {
 
     const loop = () => {
       const progress = smoothProgress.get();
-      setScrollProgress(progress);
+      // setScrollProgress(progress);
+      scrollProgressRef.current = progress;
 
       const frameIndex = Math.min(
         TOTAL_FRAMES - 1,
@@ -180,7 +183,10 @@ export default function GameCanvas() {
       const beat =
         TEXT_BEATS.find((b) => progress >= b.start && progress <= b.end) ??
         null;
-      setActiveBeat(beat);
+      if (beat?.id !== currentBeatRef.current) {
+        currentBeatRef.current = beat?.id ?? null;
+        setActiveBeat(beat);
+      }
 
       rafRef.current = requestAnimationFrame(loop);
     };

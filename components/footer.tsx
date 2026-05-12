@@ -307,7 +307,7 @@ export function Footer() {
                   <motion.a
                     key={link}
                     href="#"
-                    whileHover={{ color: Constant.text, x: 4 }}
+                    whileHover={{ color: Constant.text }}
                     style={{
                       fontFamily: Constant.body,
                       fontWeight: 300,
